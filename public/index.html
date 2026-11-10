@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Convert human-readable dates and Unix timestamps with a simple JSON API."
+    />
+    <title>Timestamp Microservice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/">TS<span>/</span>API</a>
+        <span class="status"><i></i> service online</span>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">01 — timestamp utility</p>
+        <h1>Time, translated<br /><em>into data.</em></h1>
+        <p class="intro">
+          A tiny, reliable API for turning dates into Unix timestamps and UTC
+          strings. No time zone conversion required.
+        </p>
+        <a class="button" href="#try-it">Try the API <span>↓</span></a>
+      </section>
+
+      <section class="workspace" id="try-it">
+        <div class="section-heading">
+          <p class="eyebrow">02 — request builder</p>
+          <h2>Make a request</h2>
+        </div>
+        <div class="request-card">
+          <label for="date-input">Date or Unix timestamp</label>
+          <div class="input-row">
+            <input
+              id="date-input"
+              type="text"
+              placeholder="e.g. 2015-12-25 or 1451001600000"
+              autocomplete="off"
+            />
+            <button id="submit-button" type="button">Convert</button>
+          </div>
+          <div class="quick-actions">
+            <button type="button" data-example="2015-12-25">Example date</button>
+            <button type="button" data-example="1451001600000">Example Unix</button>
+            <button type="button" data-example="">Current time</button>
+          </div>
+          <p class="error" id="error" role="alert"></p>
+        </div>
+
+        <div class="result-card" aria-live="polite">
+          <div class="result-header">
+            <span>Response</span>
+            <span class="method">GET /api/:date</span>
+          </div>
+          <pre id="result"><code>{ "unix": 0, "utc": "Thu, 01 Jan 1970 00:00:00 GMT" }</code></pre>
+        </div>
+      </section>
+
+      <section class="docs">
+        <div class="section-heading">
+          <p class="eyebrow">03 — documentation</p>
+          <h2>Use it anywhere</h2>
+        </div>
+        <div class="doc-grid">
+          <article>
+            <span class="number">01</span>
+            <h3>Natural dates</h3>
+            <p>Pass a date string and receive its Unix and UTC formats.</p>
+            <code>/api/2015-12-25</code>
+          </article>
+          <article>
+            <span class="number">02</span>
+            <h3>Unix timestamps</h3>
+            <p>Pass milliseconds since the Unix epoch for the same response.</p>
+            <code>/api/1451001600000</code>
+          </article>
+          <article>
+            <span class="number">03</span>
+            <h3>Invalid input</h3>
+            <p>Unrecognized dates return a clear, machine-readable error.</p>
+            <code>{ "error": "Invalid Date" }</code>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        <span>timestamp microservice</span>
+        <span>Built for the web · JSON first</span>
+      </footer>
+    </main>
+    <script src="/script.js"></script>
+  </body>
+</html>
